@@ -4,6 +4,12 @@ import react from '@vitejs/plugin-react-swc';
 export default defineConfig({
   plugins: [react()],
   build: {
-    outDir: 'dist',
+    rollupOptions: {
+      // Ensure Rollup resolves common modules correctly
+      external: [],
+    },
+  },
+  server: {
+    open: true, // Optional: Opens the browser automatically during dev
   },
 });

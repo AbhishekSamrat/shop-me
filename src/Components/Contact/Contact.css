@@ -21,7 +21,7 @@ ul {
   }
   
   .contact-sec {
-    align-item: center;
+    align-items: center;
     display: flex;
     background-color: #5cbde466;
   }
