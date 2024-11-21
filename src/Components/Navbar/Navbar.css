@@ -1,0 +1,52 @@
+.menu{
+    display: none;
+ 
+}
+#naav{
+    gap: 16px;
+
+}
+#form{
+    margin-bottom: 0px;
+}
+.navbar-linkk{
+    display: block;
+ justify-content: space-between;
+     display: flex;
+    align-items: center;
+    list-style:"none";
+    margin: 0;
+     padding: 0;
+     gap: 18px;
+     list-style: none;
+
+}
+
+@media (max-width: 700px){
+    .navbar-linkk{
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        background-color: blue;
+        color: white;
+        width: 100%;
+        align-items: center;
+        /* justify-content: center; */
+        float: right;
+
+    }
+    .navbar-linkk.active{
+        display: flex;
+    }
+    .menu{
+        display: block;
+    }
+
+    #naav{
+        gap: 8px;
+    }
+    #form{
+        margin-bottom: 4px;
+    }
+}
