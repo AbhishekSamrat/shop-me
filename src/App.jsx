@@ -11,7 +11,6 @@ import Hero from './Components/Hero/Hero';
 
 import TopProduct from './Components/TopProducts/TopProduct';
 import Subscribe from './Components/Subscribe/Subscribe';
-import Testimonials from './Components/Testimonials/Testimonial';
 import Footer from './Components/Footer/footer';
 
 import Men from './Components/Page/Men';
@@ -27,6 +26,7 @@ import Cartproduct from './Components/Page/Cartproduct';
 import Wishlistproduct from './Components/Page/Wishlistproduct';
 import Ordernow from './Components/Page/Ordernow';
 import Contact from './Components/Contact/Contact';
+import Testimonials from './Components/Testimonials/Testimonials';
 
 function App() {
   const dispatch = useDispatch();
