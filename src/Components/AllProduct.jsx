@@ -39,7 +39,7 @@ const addTowishlist = (id,title,price,description,image,category)=>{
           </div>
   
           {/* Products Grid */}
-          <div className='grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-5 place-items-center'>
+          <div className='grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-5 place-items-center'>
             {data.map((item) => (
               <div
               style={{position:"relative"}}
@@ -54,7 +54,7 @@ const addTowishlist = (id,title,price,description,image,category)=>{
                <img
                src={item.image}
                alt={item.title}
-               className='h-[220px] w-[150px] object-cover rounded-md'
+               className='h-[320px] w-[280px] rounded-md'
              />
                </a>
              <div>

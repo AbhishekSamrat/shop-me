@@ -1,5 +1,8 @@
 import React from 'react'
 import { useParams } from 'react-router-dom';
+import { CiFacebook } from "react-icons/ci";
+import { FaXTwitter } from "react-icons/fa6";
+import { FaInstagram } from "react-icons/fa";
 import  './ProductDetail.css'
 
 const ProductDetail = ({data}) => {
@@ -110,20 +113,15 @@ const ProductDetail = ({data}) => {
             <div className = "social-links">
               <p>Share At: </p>
               <a href = "#">
-                <i className = "fab fa-facebook-f"></i>
+               <CiFacebook />
               </a>
               <a href = "#">
-                <i className = "fab fa-twitter"></i>
+               <FaXTwitter/>
               </a>
               <a href = "#">
-                <i className = "fab fa-instagram"></i>
+               <FaInstagram/>
               </a>
-              <a href = "#">
-                <i className = "fab fa-whatsapp"></i>
-              </a>
-              <a href = "#">
-                <i className = "fab fa-pinterest"></i>
-              </a>
+           
             </div>
           </div>
         </div>

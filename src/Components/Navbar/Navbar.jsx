@@ -39,7 +39,7 @@ const Navbar = ({cart,wish,setWish}) => {
                   </a>
               </div>
               <div className='flex justify-between items-center' id='naav' style={{flexWrap:"wrap"}}>
-                  <form onSubmit={handleSubmit} className='relative group sm:block' id='form'>
+                  <form onSubmit={handleSubmit} className='relative group hidden sm:block' id='form'>
                       <input type='text' placeholder='search' className='w-[200px] sm:w-[200px] group-hover:w-[300px] transition-all duration-300 rounded-lg border border-gray-300 py-1 px-2 text-sm focus:outline-none focus:border-1 focus:border-primary dark:border-gray-500 dark:bg-slate-800' 
                       value={searchTerm}
                       onChange={(e)=> setSearchterm(e.target.value)}
