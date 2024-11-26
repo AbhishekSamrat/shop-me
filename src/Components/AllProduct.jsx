@@ -11,18 +11,44 @@ const AllProduct = ({data,cart,setCart,wish,setWish}) => {
   
 const  addToCart = (id,title,price,description,image,category) =>{
   const obj = {
-    id,title,price,description,image,category
+    id: id,
+    count :1,
+    uid:Date.now(),
+    title :title,
+    price :price,
+    description:description,
+    image :image,
+    category : category
   }
-  setCart([...cart , obj])
-  console.log( cart)
+  const updatedCart=([...cart , obj]);
+  setCart(updatedCart);
+  localStorage.setItem('cart', JSON.stringify(updatedCart));
+  console.log('Cart:', updatedCart);
 }
 
-const addTowishlist = (id,title,price,description,image,category)=>{
+const  addToWish = (id,title,price,description,image,category) =>{
   const obj = {
-    id,title,price,description,image,category
+    id: id,
+    count :1,
+    uid:Date.now(),
+    title :title,
+    price :price,
+    description:description,
+    image :image,
+    category : category
   }
-        setWish([...wish,obj])
+  const updatedWish=([...wish , obj]);
+  setWish(updatedWish);
+  localStorage.setItem('wish', JSON.stringify(updatedWish));
+  console.log('Wish:', updatedWish);
 }
+
+// const addTowishlist = (id,title,price,description,image,category)=>{
+//   const obj = {
+//     id,title,price,description,image,category
+//   }
+//         setWish([...wish,obj])
+// }
 
     return (
       <div className='mt-14 mb-12'>
@@ -49,7 +75,7 @@ const addTowishlist = (id,title,price,description,image,category)=>{
                 className='bg-white shadow-md rounded-lg p-4 hover:shadow-lg transition duration-300'
                 id='box'
               >
-              <FaRegHeart onClick={()=>addTowishlist(item.id,item.title,item.price,item.description,item.image,item.category)} style={{position:"absolute",top:"2%",right:"10%",cursor:"pointer"}} id='heart'  />
+              <FaRegHeart onClick={()=>addToWish(item.id,item.title,item.price,item.description,item.image,item.category)} style={{position:"absolute",top:"2%",right:"10%",cursor:"pointer"}} id='heart'  />
                <a href={item.id}>
                <img
                src={item.image}

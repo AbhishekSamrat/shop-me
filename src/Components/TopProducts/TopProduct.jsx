@@ -29,6 +29,7 @@ const ProductsData = [
 ]
 
 const TopProduct = ({ handleOrderpopup }) => {
+  const user="abhi";
   return (
     <div className='container'>
       <div className='text-left mb-24'>
@@ -54,7 +55,7 @@ const TopProduct = ({ handleOrderpopup }) => {
                   </div>
                   <h1 className='text-xl font-bold'>{data.title}</h1>
                   <p className='text-gray-500 group-hover:text-black duration-300 text-sm line-clamp-2' style={{marginBottom:"5px"}}>{data.description}</p>
-                  <a href = '/ordernow' className='bg-primary  hover:scale-105 duration-300 text-white py-1 px-4 rounded-full mt-4 group-hover:bg-white group-hover:text-primary'>Order Now</a>
+                  <a href = {!user?'/login':'/ordernow'} className='bg-primary  hover:scale-105 duration-300 text-white py-1 px-4 rounded-full mt-4 group-hover:bg-white group-hover:text-primary'>Order Now</a>
                 </div>
 
               </div>

@@ -7,6 +7,7 @@ import { FaHeart } from "react-icons/fa6";
 import { FaUserCircle } from "react-icons/fa";
 import {Link, NavLink,BrowserRouter as Router, useNavigate} from 'react-router-dom'
 import { SlMenu } from "react-icons/sl";
+
 import './Navbar.css'
 
 const Navbar = ({cart,wish,setWish}) => {
@@ -47,7 +48,7 @@ const Navbar = ({cart,wish,setWish}) => {
                       <IoMdSearch className='text-slate-800 group-hover:text-primary absolute top-1/2 -translate-y-1/2 right-3' />
                   </form>
              
-                  <Link to= '/cartproduct' type="button" class="btn btn-primary position-relative">
+                  <Link to= '/cartproduct' onClick={()=>window.location.href='/cartProduct'} type="button" class="btn btn-primary position-relative">
   <FaCartShopping />
   <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
    {cart.length}
@@ -55,7 +56,7 @@ const Navbar = ({cart,wish,setWish}) => {
   </span>
 </Link>
 
-<Link  to= '/wishlist' type="button" class="btn btn-primary position-relative">
+<Link  to= '/wishlist' onClick={()=>window.location.href='/wishlist'}  type="button" class="btn btn-primary position-relative">
   <FaHeart />
   <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
    {wish.length}
@@ -90,7 +91,8 @@ const Navbar = ({cart,wish,setWish}) => {
    <NavLink to='/jewellery' onClick={toggleMenu}>Jewellery</NavLink>
    </li>
    <li>
-   <a href='#contact' onClick={toggleMenu}>Contact Us</a>
+ 
+   <NavLink to='/contact' onClick={toggleMenu}>Contact Us</NavLink>
    </li>
    </ul>
 </nav>

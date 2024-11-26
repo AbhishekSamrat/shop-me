@@ -5,34 +5,26 @@ import { FaXTwitter } from "react-icons/fa6";
 import { FaInstagram } from "react-icons/fa";
 import  './ProductDetail.css'
 
-const ProductDetail = ({data}) => {
-   
 
+
+const ProductDetail = ({data,cart,setCart}) => {
+   
     const {id} = useParams()
     console.log(id);
     const itemDetail = data.find((item) => item.id.toString() === id )
     if(!itemDetail){
         return <h1>Product not found!!</h1>
     }
-    const imgs = document.querySelectorAll('.img-select a');
-    const imgBtns = [...imgs];
-    let imgId = 1;
-    
-    imgBtns.forEach((imgItem) => {
-        imgItem.addEventListener('click', (event) => {
-            event.preventDefault();
-            imgId = imgItem.dataset.id;
-            slideImage();
-        });
-    });
-    
-    function slideImage(){
-        const displayWidth = document.querySelector('.img-showcase img:first-child').clientWidth;
-    
-        document.querySelector('.img-showcase').style.transform = `translateX(${- (imgId - 1) * displayWidth}px)`;
+
+
+    const  addToCart = (id,title,price,description,image,category) =>{
+      const obj = {
+        id,title,price,description,image,category
+      }
+      setCart([...cart , obj])
+      console.log( cart)
     }
-    
-    window.addEventListener('resize', slideImage);
+
   return (
         <div>
        
@@ -103,8 +95,8 @@ const ProductDetail = ({data}) => {
             </div>
       
             <div className = "purchase-info">
-              <input type = "number" min = "0" value = "1" />
-              <button type = "button" className = "btn">
+        
+              <button type = "button" className = "btn" onClick={()=>addToCart( itemDetail.id,itemDetail.title,itemDetail.price,itemDetail.description,itemDetail.image,itemDetail.category)}>
                 Add to Cart <i className = "fas fa-shopping-cart"></i>
               </button>
               <button type = "button" className = "btn">Compare</button>

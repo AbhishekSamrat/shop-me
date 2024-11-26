@@ -1,18 +1,55 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './Cartproduct.css'
 import { RiDeleteBin6Fill } from "react-icons/ri";
 import { IoMdAddCircleOutline } from "react-icons/io";
 import { GrSubtractCircle } from "react-icons/gr";
 
 const Cartproduct = ({cart,setCart}) => {
-  const remove=(id)=>{
-    const filteritm = cart.filter((itm)=>itm.id !==id)
+  const [total, setTotal] = useState(0);
+ 
+  const remove=(abhi)=>{
+    const filteritm = cart.filter((itm)=>itm.uid !==abhi)
     setCart(filteritm)
   } 
+  
 
-  const totalprice = cart.reduce((prev,curr) => prev+curr.price,0)
+  const getTotalPrice = () => {
+    const totalPrice = cart.reduce((acc, item) => {
+      return acc + (item.count || 1) * item.price; }, 0); 
+      setTotal(parseFloat(totalPrice.toFixed(2)));
+  };
+
+  useEffect(() => {
+    getTotalPrice();
+  }, [cart]);
+
+  
+  const incrementCount = (uid) => {
+    const prod = cart.map((product) =>
+      product.uid === uid
+        ? { ...product, count: (product.count || 0) + 1 } : product
+    );
+    setCart(prod);
+  
+      localStorage.setItem('cart', JSON.stringify(prod));
+  };
+  
+    const decrementCount =  (uid)=>{
+      const prod=cart.map((product)=>product.uid===uid ? {...product,count:product.count-1||1}:product);
+        setCart(prod);
+        localStorage.setItem('cart', JSON.stringify(prod));
+      }
+  
+ 
+      useEffect(() => {
+        window.scrollTo(0, 0);
+   }, []);
+ 
+
+
   const clear=()=>{
-    setCart("")
+    setCart([]);
+    localStorage.removeItem('cart');
     alert("Your cart is empty")
     window.location.href = '/'
   }
@@ -36,7 +73,7 @@ const Cartproduct = ({cart,setCart}) => {
           
           <tr>
           <td data-label="ID">
-            {item.id}
+            {item.uid}
           </td>
           <td data-label="Product Name">
           {item.title.slice(0,16)}
@@ -44,16 +81,17 @@ const Cartproduct = ({cart,setCart}) => {
             <td data-label="Image">
             <img src= {item.image} style={{width:"50px",height:"50px"}} />
             </td>
-            <td data-label="Price" id="price">${item.price}</td>
-            <td data-label="Quantity"><div className="d-flex gap-2">
-        <input id="qty" value="0" />
-        <IoMdAddCircleOutline  style={{fontSize:"25px"}}/>
-        <GrSubtractCircle style={{fontSize:"25px"}} />
+            <td data-label="Price" id="price">${item.price * item.count}</td>
+            <td data-label="Quantity"><div className="d-flex gap-2" style={{justifyContent:"center"}}>
+             
+        <IoMdAddCircleOutline  onClick={()=>incrementCount(item.uid)} style={{fontSize:"25px"}}/>
+        <p>{item.count}</p>
+        <GrSubtractCircle onClick={()=>decrementCount(item.uid)} style={{fontSize:"25px"}} />
       
       </div></td>
         
             <td data-label="Action">
-            <RiDeleteBin6Fill onClick={()=>remove(item.id)}  style={{fontSize:"25px",color:"red",cursor:"pointer"}} />
+           <center> <RiDeleteBin6Fill onClick={()=>remove(item.uid)}  style={{fontSize:"25px",color:"red",cursor:"pointer"}} /></center>
 
           </td>
           </tr>
@@ -65,7 +103,7 @@ const Cartproduct = ({cart,setCart}) => {
     }
     </tbody>
     </table>
-    <div style={{width:"350px",margin:"auto",background:"blue",color:"white",fontWeight:"bold",marginBottom:"10px"}}><h4 className='text-center p-2'>Total Price :  <span>${totalprice}</span></h4></div>
+    <div style={{width:"350px",margin:"auto",background:"blue",color:"white",fontWeight:"bold",marginBottom:"10px"}}><h4 className='text-center p-2'>Total Price :  <span>${total}</span></h4></div>
     <center><button onClick={clear} className='btn btn-danger'>Clear Cart</button></center>
     </div>
   )

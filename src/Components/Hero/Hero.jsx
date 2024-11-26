@@ -3,6 +3,12 @@ import Image1 from '../../../public/Image/1.jpg'
 import Image2 from '../../../public/Image/2.jpg'
 import Image3 from '../../../public/Image/3.jpg'
 import Slider from 'react-slick'
+import AllProduct from '../AllProduct'
+import TopProduct from '../TopProducts/TopProduct'
+import Subscribe from '../Subscribe/Subscribe'
+import Testimonials from '../Testimonials/Testimonials'
+import Contact from '../Contact/Contact'
+import { Outlet } from 'react-router-dom'
 
 const ImageList =[
     {
@@ -24,7 +30,7 @@ const ImageList =[
         description : "Web development is the work involved in developing a website for the Internet or an intranet. Web development can range from developing a simple single static page of plain text to complex web applications, electronic businesses, and social network services.developing a simple single static page of plain text to complex web applications, electronic businesses, and social network services."
     }
 ]
-const Hero = ({handleOrderpopup}) => {
+const Hero = ({handleOrderpopup,cart,setCart,wish,setWish,data}) => {
     var settings = {
         dots : false,
         arrows : false,
@@ -38,6 +44,8 @@ const Hero = ({handleOrderpopup}) => {
         pauseonFocus : true,
     };
   return (
+    <>
+    <Outlet/>
     <div className=' relative overflow-hidden h-min-[550px] sm:min-h-[650px] bg-gray-100 flex justify-center items-center dark:bg-slate-950 dark:text-white duration-300'>
     <div className='h-[700px] w-[700px] bg-primary/40 absolute -top-1/2 right-0 rounded-3xl rotate-45 -z[8]'></div>
     <div className='container pb-8 sm:pb-0'>
@@ -68,6 +76,13 @@ const Hero = ({handleOrderpopup}) => {
     
     </div>
     </div>
+    <AllProduct cart={cart} setCart={setCart} wish={wish} setWish={setWish} data={data} /> 
+
+    <TopProduct />
+    <Subscribe />
+    <Testimonials />
+    <Contact />
+    </>
   )
 }
 
