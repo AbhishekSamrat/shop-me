@@ -14,10 +14,19 @@ const Electronics = ({data,cart,setCart}) => {
  console.log(electronics);
  const  addToCart = (id,title,price,description,image,category) =>{
   const obj = {
-    id,title,price,description,image,category
+    id: id,
+    count :1,
+    uid:Date.now(),
+    title :title,
+    price :price,
+    description:description,
+    image :image,
+    category : category
   }
-  setCart([...cart , obj])
-  console.log( cart)
+  const updatedCart=([...cart , obj]);
+  setCart(updatedCart);
+  localStorage.setItem('cart', JSON.stringify(updatedCart));
+  console.log('Cart:', updatedCart);
 }
   return (
     <>
