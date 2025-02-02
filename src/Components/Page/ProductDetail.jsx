@@ -33,7 +33,9 @@ const ProductDetail = ({data,cart,setCart}) => {
       localStorage.setItem('cart', JSON.stringify(updatedCart));
       console.log('Cart:', updatedCart);
     }
+          
   return (
+/* Product Details section start */
         <div>
        
         <div className = "card-wrapper mt-70" >
@@ -75,6 +77,8 @@ const ProductDetail = ({data,cart,setCart}) => {
           <div className = "product-content">
             <h2 className = "product-title" style={{fontSize:"20px"}}>{itemDetail.title}</h2>
             <a href = "#" className = "product-link">visit nike store</a>
+   
+                     {/*Product ratings  */}
             <div className = "product-rating">
               <i className = "fas fa-star"></i>
               <i className = "fas fa-star"></i>
@@ -129,7 +133,7 @@ const ProductDetail = ({data,cart,setCart}) => {
 
     </div>
         
-      
+      /* Product Details section end */
   )
 }
 

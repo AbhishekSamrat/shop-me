@@ -2,7 +2,10 @@ import React from 'react'
 import './Login.css'
 
 const Register = () => {
+       
   return (
+
+  /* Login section start */
     <div className='loginbg'>
     
 <div className="container" >
@@ -51,6 +54,7 @@ const Register = () => {
 </div>
 
     </div>
+      /* Login section end */
   )
 }
 

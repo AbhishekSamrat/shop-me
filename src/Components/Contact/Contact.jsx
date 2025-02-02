@@ -9,6 +9,9 @@ import { FaWhatsappSquare } from "react-icons/fa";
 
 const Contact = () => {
   return (
+
+      
+         /* Contact section start */
     <div id='contact'>
     <section className="contact-sec sec-pad" >
   <div className="container">
@@ -76,6 +79,7 @@ const Contact = () => {
   </div>
 </section>
     </div>
+             /* Contact section end */
   )
 }
 

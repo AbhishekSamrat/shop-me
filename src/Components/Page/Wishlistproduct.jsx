@@ -1,15 +1,20 @@
 import React from 'react'
 import { RiDeleteBin6Fill } from "react-icons/ri";
-import { IoMdAddCircleOutline } from "react-icons/io";
-import { GrSubtractCircle } from "react-icons/gr";
+
 import './Wishlist.css'
 
 const Wishlistproduct = ({wish,setWish}) => {
+    // Function to remove an item from the wishlist based on its unique ID (`uid`)
   const remove=(abhi)=>{
+     // Filters out the item with the matching `uid` from the `wish` array
     const filteritm = wish.filter((itm)=>itm.uid !==abhi)
+      // Updates the `setWish` state with the filtered wishlist (removes the item)
     setWish(filteritm)
   } 
+       
   return (
+
+  /* Wishlist  section start  */
     <div>
     <table class="table">
     <thead>
@@ -52,6 +57,7 @@ wish.map((itm)=>(
 </tbody>
 </table>
     </div>
+      /* Wishlist  section end  */
   )
 }
 

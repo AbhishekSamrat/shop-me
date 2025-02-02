@@ -6,16 +6,19 @@ import { GrSubtractCircle } from "react-icons/gr";
 
 const Cartproduct = ({cart,setCart}) => {
   const [total, setTotal] = useState(0);
- 
+   // Function to remove an item from the cart by its unique identifier
   const remove=(abhi)=>{
+      // Filter out the item with the matching uid from the cart
     const filteritm = cart.filter((itm)=>itm.uid !==abhi)
-    setCart(filteritm)
+    setCart(filteritm) // Update the cart state with the filtered list
   } 
   
-
+ // Function to calculate the total price of items in the cart
   const getTotalPrice = () => {
     const totalPrice = cart.reduce((acc, item) => {
+       // Calculate total as the sum of (item count * item price) for each cart item
       return acc + (item.count || 1) * item.price; }, 0); 
+       // Round the total price to two decimal places and update the total state
       setTotal(parseFloat(totalPrice.toFixed(2)));
   };
 
@@ -25,6 +28,7 @@ const Cartproduct = ({cart,setCart}) => {
 
   
   const incrementCount = (uid) => {
+      // Increment the count of a product in the cart
     const prod = cart.map((product) =>
       product.uid === uid
         ? { ...product, count: (product.count || 0) + 1 } : product
@@ -35,8 +39,10 @@ const Cartproduct = ({cart,setCart}) => {
   };
   
     const decrementCount =  (uid)=>{
+      // Decrement the count of a product in the cart
       const prod=cart.map((product)=>product.uid===uid ? {...product,count:product.count-1||1}:product);
         setCart(prod);
+        // Save the updated cart to localStorage for persistence
         localStorage.setItem('cart', JSON.stringify(prod));
       }
   
@@ -53,7 +59,11 @@ const Cartproduct = ({cart,setCart}) => {
     alert("Your cart is empty")
     window.location.href = '/'
   }
+         
   return (
+
+/* Cart Products section start */
+     
     <div>
     <table class="table">
     <thead>
@@ -106,6 +116,7 @@ const Cartproduct = ({cart,setCart}) => {
     <div style={{width:"350px",margin:"auto",background:"blue",color:"white",fontWeight:"bold",marginBottom:"10px"}}><h4 className='text-center p-2'>Total Price :  <span>${total}</span></h4></div>
     <center><button onClick={clear} className='btn btn-danger'>Clear Cart</button></center>
     </div>
+    /* Cart Products section end */
   )
 }
 

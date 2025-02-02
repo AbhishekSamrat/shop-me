@@ -43,12 +43,7 @@ const  addToWish = (id,title,price,description,image,category) =>{
   console.log('Wish:', updatedWish);
 }
 
-// const addTowishlist = (id,title,price,description,image,category)=>{
-//   const obj = {
-//     id,title,price,description,image,category
-//   }
-//         setWish([...wish,obj])
-// }
+
 
     return (
       <div className='mt-14 mb-12'>

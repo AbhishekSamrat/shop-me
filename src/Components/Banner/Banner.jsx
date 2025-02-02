@@ -4,6 +4,7 @@ import hero from '../../../public/Image/1.jpg'
 
 const Banner = () => {
   return (
+      /* Banner section start */
     <div className='min-h-[550px] flex justify-center items-center py-12 sm:py-0'>
     <div className='container'>
     <div className='grid grid-cols-1 sm:grid-cols-2 gap-6 items-center'>
@@ -18,6 +19,7 @@ const Banner = () => {
     </div>
     </div>
     </div>
+      /* Banner section end */
   )
 }
 

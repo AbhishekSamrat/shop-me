@@ -7,10 +7,11 @@ const Electronics = ({data,cart,setCart}) => {
  const [electronics,setElectronics]=useState([]);
  
  useEffect(()=>{
+  // Filters the `data` array to include only items in the 'electronics' category
   const filteredData=data.filter(item=>item.category==='electronics'  );
   setElectronics(filteredData);
 
- },[data])
+ },[data]) // The effect re-runs whenever the `data` prop changes
  console.log(electronics);
  const  addToCart = (id,title,price,description,image,category) =>{
   const obj = {
@@ -23,8 +24,10 @@ const Electronics = ({data,cart,setCart}) => {
     image :image,
     category : category
   }
+    // Adds the new product to the existing cart
   const updatedCart=([...cart , obj]);
   setCart(updatedCart);
+  // Saves the updated cart to localStorage for persistence
   localStorage.setItem('cart', JSON.stringify(updatedCart));
   console.log('Cart:', updatedCart);
 }

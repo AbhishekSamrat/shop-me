@@ -5,28 +5,27 @@ import { BrowserRouter, Outlet, Route, Routes, useLocation } from 'react-router-
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchProduct } from './Redux/Product';
 
-import Banner from './Components/Banner/Banner';
+
 import Navbar from './Components/Navbar/Navbar';
 import Hero from './Components/Hero/Hero';
 
-import TopProduct from './Components/TopProducts/TopProduct';
-import Subscribe from './Components/Subscribe/Subscribe';
+
 import Footer from './Components/Footer/footer';
 
 import Men from './Components/Page/Men';
 import Women from './Components/Page/Women';
 import Jewellery from './Components/Page/Jewellery';
 import Electronics from './Components/Page/Electronics';
-import AllProduct from './Components/AllProduct';
+
 import Searchitem from './Components/Page/Searchitem';
 import ProductDetail from './Components/Page/ProductDetail';
-import ProductLayout from './Components/Page/ProductLayout';
+
 import Login from './Components/Page/Login';
 import Cartproduct from './Components/Page/Cartproduct';
 import Wishlistproduct from './Components/Page/Wishlistproduct';
 import Ordernow from './Components/Page/Ordernow';
 import Contact from './Components/Contact/Contact';
-import Testimonials from './Components/Testimonials/Testimonials';
+
 import Register from './Components/Page/Register';
 
 

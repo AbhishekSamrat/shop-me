@@ -1,8 +1,48 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './Login.css'
 
 const Login = () => {
+
+      const [email, setEmail] = useState("")
+      const [password, setPassword] = useState("")
+      const [error, setError] = useState([])
+
+       const handleSubmit = (event)=> {  
+        event.preventDefault();  // Prevents the default form submission behavior
+        const errors = validate(); // Calls the `validate` function to check for input errors
+        setError(errors) // Updates the `error` state with the validation results
+        // If there are no validation errors, proceed with login success alert
+        if(Object.keys(errors).length === 0){
+          alert('LogIn Successfully')
+        }
+
+       }
+
+       const validate = () =>{
+        const error = {}   // Object to store validation errors
+        // Validate the email input
+        if(!email){
+          error.email = 'Email is required' // Error message if email is empty
+        }else if(!/\s+@\s+\.\s+/.test(email)){ 
+         error.email = 'Email not matched'     // Error message if email format is invalid
+        }else{ 
+          error.email = ''; // No error for valid email input
+        }
+
+
+        if(!password){
+          error.password = 'Password is required' // Error message if Password is empty
+        }else if(password.length < 8){
+         error.password = 'Password not matched' // Error message if password is too shor
+        }else{
+          error.password = ''; // No error for valid password input
+        }
+            return error;  // Return the errors object for further handling
+       }
   return (
+
+
+          /* LogIn Section start */
     <div className='loginbg'>
     
 <div className="container" >
@@ -14,15 +54,17 @@ const Login = () => {
   <div className="col-lg-6 d-flex align-items-center justify-content-center right-side">
     <div className="form-2-wrapper">
       <div className="logo text-center">
-        <h2>Abhishek Samrat</h2>
+       
       </div>
       <h2 className="text-center mb-4">Sign Into Your Account</h2>
-      <form action="#" method='post'>
+      <form onSubmit={handleSubmit} action="#" method='post'>
         <div className="mb-3 form-box">
-          <input type="email" className="form-control" id="email" name="email" placeholder="Enter Your Email" required />
+          <input type="text" onChange={(e) => setEmail(e.target.value)} className="form-control" id="email" name="email" placeholder="Enter Your Email"  />
+          {error.email && <div>{error.email}</div>}
         </div>
         <div className="mb-3">
-          <input type="password" className="form-control" id="password" name="password" placeholder="Enter Your Password" required />
+          <input type="password" onChange={(e) => setPassword(e.target.value)} className="form-control" id="password" name="password" placeholder="Enter Your Password"  />
+          {error.password && <div>{error.password}</div>}
         </div>
         <div className="mb-3">
           <div className="form-check">
@@ -48,6 +90,7 @@ const Login = () => {
 </div>
 
     </div>
+    /* LogIn Section end */
   )
 }
 

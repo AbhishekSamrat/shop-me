@@ -12,14 +12,7 @@ import {
 } from "react-icons/fa";
 import { IoCall } from "react-icons/io5";
 
-// const BannerImg = {
-//   backgroundImage: `url(${Banner})`,
-//   backgroundPosition: "bottom",
-//   backgroundRepeat: "no-repeat",
-//   backgroundSize: "cover",
-//   height: "100%",
-//   width: "100%",
-// };
+
 
 const FooterLinks = [
   {
